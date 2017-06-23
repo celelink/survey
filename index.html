@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<link rel="icon" href="https://static.jianshukeji.com/highcharts/images/favicon.ico">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<title>快修项目市场调研数据统计</title>
+		<script src="./js/highcharts.js"></script>
+		<script src="./js/exporting.js"></script>
+		<script src="./js/highcharts-zh_CN.js"></script>
+	</head>
+
+	<body>
+		<div id="container" style="min-width:300px;min-height:300px"></div>
+		<script>
+			var chart = new Highcharts.Chart('container', {
+				title: {
+					text: '快修项目市场调研数据统计',
+					x: -20
+				},
+				subtitle: {
+					text: '',
+					x: -20
+				},
+				xAxis: {
+					categories: ['06全年', '07年一月', '07年二月', '07年三月', '07年四月', '07年五月', '07年六月', '07年七月', '07年八月', '07年九月', '07年十月', '07年十一月', '07年十二月']
+				},
+				yAxis: {
+					title: {
+						text: '单位 (次)'
+					},
+					plotLines: [{
+						value: 0,
+						width: 1,
+						color: '#808080'
+					}]
+				},
+				tooltip: {
+					valueSuffix: '次'
+				},
+				legend: {
+					layout: 'vertical',
+					align: 'right',
+					verticalAlign: 'middle',
+					borderWidth: 0
+				},
+				series: [{
+					name: '灯类维修',
+					//     0   1   2   3  4   5  6  7  8  9 10  11  12
+					data: [13, 2, 39, 21, 16, 20, 0, 0, 0, 0, 0, 0, 0]
+				}, {
+					name: '补漆维修',
+					//     0  1  2  3  4  5  6  7  8  9 10  11  12
+					data: [1, 0, 2, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0]
+				}, {
+					name: '墙面维修',
+					//     0  1  2  3  4  5  6  7  8  9 10  11  12
+					data: [2, 0, 6, 1, 4, 1, 0, 0, 0, 0, 0, 0, 0]
+				}, {
+					name: '锁类维修',
+					//     0  1  2  3  4  5  6  7  8  9 10  11  12
+					data: [0, 0, 4, 3, 1, 1, 0, 0, 0, 0, 0, 0, 0]
+				}, {
+					name: '地面维修',
+					//     0  1  2  3  4  5  6  7  8  9 10  11  12
+					data: [0, 0, 6, 1, 0, 6, 0, 0, 0, 0, 0, 0, 0]
+				}, {
+					name: '其他维修',
+					//     0  1   2  3   4   5  6  7  8  9 10 11  12
+					data: [3, 0, 15, 13, 11, 9, 1, 0, 0, 0, 0, 0, 0]
+				}]
+			});
+
+			document.getElementsByClassName('highcharts-credits')[0].style.display = 'none';
+		</script>
+
+	</body>
+
+</html>
