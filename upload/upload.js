@@ -216,12 +216,7 @@ objBig.arr = [];
 		uploader.on('ready', function() {
 			window.uploader = uploader;
 		});
-		uploader.on('uploadBeforeSend', function(obj,data, headers) {   
-		   headers,{                                                               
-			 "Origin": "https://celelink.github.io" ,                                                       
-			 "Access-Control-Request-Method":"POST"                                           
-		   };                                                                               
-		});   
+
 		// 当有文件添加进来时执行，负责view的创建
 		function addFile(file) {
 			var $li = $('<li id="' + file.id +'">' +
