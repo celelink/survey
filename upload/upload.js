@@ -159,9 +159,9 @@ objBig.arr = [];
 			//server: 'http://127.0.0.1:8000/celefix/backend/base/saveAttachment',
 			// runtimeOrder: 'flash',
 			accept: {
-				title: 'Images',
+				title: '图片选择',
 				extensions: 'jpg,jpeg,png',
-				mimeTypes: 'image/jpeg'
+				mimeTypes: 'image/*'
 			},
 			compress: {
 				quality: 50,// 图片质量，只有type为`image/jpeg`的时候才有效。
