@@ -150,8 +150,11 @@ objBig.arr = [];
 				attachmentFile: 111,
 				attachmentType: 2
 			},
+			dnd: '#dndArea',
+			paste: '#uploader',
 			swf: '../../dist/Uploader.swf',
 			chunked: false,
+			compress: null,
 			auto: true,
 			fileNumLimit: 20,
 			chunkSize: 512 * 1024,
@@ -159,17 +162,10 @@ objBig.arr = [];
 			//server: 'http://127.0.0.1:8000/celefix/backend/base/saveAttachment',
 			// runtimeOrder: 'flash',
 			accept: {
-				title: '图片选择',
+				title: 'Images',
 				extensions: 'jpg,jpeg,png',
 				mimeTypes: 'image/*'
 			},
-			//compress: {
-				//quality: 50,// 图片质量，只有type为`image/jpeg`的时候才有效。
-			//	allowMagnify: false,// 是否允许放大，如果想要生成小图的时候不失真，此选项应该设置为false.
-			//	noCompressIfLarger: false,
-			//	crop: false,// 是否允许裁剪。
-			//},
-				compress:null,
 			// 禁掉全局的拖拽功能。这样不会出现图片拖进页面的时候，把图片打开。
 			disableGlobalDnd: true,
 			fileSizeLimit: 200 * 1024 * 1024, // 200 M
