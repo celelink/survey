@@ -161,7 +161,7 @@ objBig.arr = [];
 			accept: {
 				title: 'Images',
 				extensions: 'jpg,jpeg,png',
-				mimeTypes: 'image/jpg,image/jpeg,image/png'
+				mimeTypes: 'image/jpeg'
 			},
 			compress: {
 				quality: 50,// 图片质量，只有type为`image/jpeg`的时候才有效。
