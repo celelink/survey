@@ -106,9 +106,10 @@
 				return urls;
 			}
 			if(url.indexOf("?")>0){
-				$("#date").html(formUrl(url).date==undefined?"2017-05-11":formUrl(url).date);
-				$("#tel").html(formUrl(url).tel==undefined?"18516718716":formUrl(url).tel);
-				$("#shopName").html(formUrl(url).shopName==undefined?"默秀上海展示服务有限公司":decodeURI(formUrl(url).shopName));
+				//$("#date").html(formUrl(url).date==undefined?"2017-05-11":formUrl(url).date);
+				//$("#tel").html(formUrl(url).tel==undefined?"18516718716":formUrl(url).tel);
+				//$("#shopName").html(formUrl(url).shopName==undefined?"默秀上海展示服务有限公司":decodeURI(formUrl(url).shopName));
+				$("title").html(formUrl(url).typePicture==undefined?"默秀上海展示服务有限公司":decodeURI(formUrl(url).shopName));
 			}
 			//------------表单数据的整理----------------
 			$("#submit").click(function() {
