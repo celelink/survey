@@ -156,14 +156,14 @@ objBig.arr = [];
 			chunked: false,
 			compress: null,
 			auto: false,
-			fileNumLimit: 5,
+			fileNumLimit: 20,
 			chunkSize: 512 * 1024,
 			server: 'http://116.62.48.143/celefix/backend/base/saveImg',
 			//server: 'http://127.0.0.1:8000/celefix/backend/base/saveAttachment',
 			// runtimeOrder: 'flash',
 			accept: {
 				title: 'Images',
-				extensions: 'gif,jpg,jpeg,bmp,png',
+				extensions: 'jpg,jpeg,png',
 				mimeTypes: 'image/*'
 			},
 			// 禁掉全局的拖拽功能。这样不会出现图片拖进页面的时候，把图片打开。
@@ -331,7 +331,7 @@ objBig.arr = [];
 
 				switch(index) {
 					case 0:
-						uploader.removeFile(file);
+						uploader.removeFile(file);//删除指定文件
 						return;
 
 					case 1:
