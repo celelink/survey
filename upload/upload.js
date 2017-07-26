@@ -152,7 +152,6 @@ objBig.arr = [];
 			},
 			swf: '../../dist/Uploader.swf',
 			chunked: false,
-			compress: null,
 			auto: true,
 			fileNumLimit: 20,
 			chunkSize: 512 * 1024,
@@ -162,7 +161,7 @@ objBig.arr = [];
 			accept: {
 				title: 'Images',
 				extensions: 'jpg,jpeg,png',
-				mimeTypes: 'image/*'
+				mimeTypes: 'image/jpg,image/jpeg,image/png'
 			},
 			compress: {
 				quality: 50,// 图片质量，只有type为`image/jpeg`的时候才有效。
