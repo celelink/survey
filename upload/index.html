@@ -5,21 +5,37 @@
 		<title>上传</title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
 		<link rel="stylesheet" type="text/css" href="webuploader.css" />
-		
+		<style>
+			body{
+				background:#ccc
+			}
+			#uploader{
+				padding:10px 10px 0;
+				background:#fff;
+			}
+			.title{
+			    padding:0 0 10px;
+				font-size:16px
+			}
+			#submit{
+				background:#ff5700;
+				color:#fff;
+				width:50%;
+				padding:8px;
+				border:none;
+				margin:40px auto;
+				text-align:center;
+				font-size:18px;
+				display: block;
+				border-radius:8px;
+			}
+		</style>
 	<body>
 		<div id="uploader">
-			<h2></h2>
-			<div class="queueList">
-				<div id="dndArea" class="placeholder">
-				</div>
-			</div>
-			<div class="statusBar">
-												<div class="btns">
-													<div id="filePicker2"></div>
-													<div class="uploadBtn">开始上传</div>
-												</div>
-											</div>
+			<h2 class="title">店内照片(<font color="red">*</font>无限上传,自动上传)</h2>
+			<div class="queueList"><div id="dndArea"></div></div>
 		</div>
+		<button id="submit">完成</button>
 		<script type="text/javascript" src="jquery.js"></script>
 		<script type="text/javascript" src="webuploader.js"></script>
 		<script type="text/javascript" src="html2canvas.js"></script>
@@ -78,13 +94,7 @@
 					}
 				});
 			}
-			$('#tableChild').on('click', '.close', function() {
-				$(this).next().html('<span class="texie">特写图</span><input type="file" class="testUpload file" onchange="imgUpLoad(this)">');
-				$(this).next().addClass("add");
-				$(this).css("display","none");
-				urlArr.pop();//当用户删除图片时对图片数组进行最后一个的删除
-				//console.log(urlArr);
-			})
+			
 			//------------------对url进行分解操作------------------
 			var url = window.location.href;
 			function formUrl(url) {
@@ -95,27 +105,18 @@
 				}
 				return urls;
 			}
-			//if(url.indexOf("?")>0){
-			//	$("#date").html(formUrl(url).date==undefined?"2017-05-11":formUrl(url).date);
-			//	$("#tel").html(formUrl(url).tel==undefined?"18516718716":formUrl(url).tel);
-			//	$("#shopName").html(formUrl(url).shopName==undefined?"默秀上海展示服务有限公司":decodeURI(formUrl(url).shopName));
-			//	}else{
-			//		alert("链接出现错误");
-			//	}
+			if(url.indexOf("?")>0){
+				$("#date").html(formUrl(url).date==undefined?"2017-05-11":formUrl(url).date);
+				$("#tel").html(formUrl(url).tel==undefined?"18516718716":formUrl(url).tel);
+				$("#shopName").html(formUrl(url).shopName==undefined?"默秀上海展示服务有限公司":decodeURI(formUrl(url).shopName));
+			}
 			//------------表单数据的整理----------------
-			$("#btnFinish").click(function() {
-				if(quanUrl.length == 0) {
-					alert("请先上传全景图");
+			$("#submit").click(function() {
+				if(pictrueArr.length == 0) {
+					alert("请先上传图片");
 					return
 				};
-				for(var i=0;i<$(".jiaoyan").length;i++){
-					if($(".jiaoyan")[i].value==""){
-
-						alert("请将信息填写完整");
-						return
-					}
-				}
-				//console.log("全景图"+quanUrl);
+				//console.log("全景图"+pictrueArr);
 				//console.log("特写图"+urlArr);
 				//console.log("名称"+oldArr("kName"));
 				//console.log("位置"+oldArr("kPlace"));
@@ -128,17 +129,17 @@
 				var jsonData = {
 						"date": new Date().Format("yyyy-MM-dd"),
 						"tel": formUrl(url).tel,
-						"technicianName": decodeURI(formUrl(url).technicianName),
-						"shopName": shopName,
-						"panorama": quanUrl,
-						"imgArr": urlArr,
-						"kName": oldArr("kName"),
-						"kPlace": oldArr("kPlace"),
-						"kNumber": oldArr("kNumber"),
-						"kWidth": oldArr("kWidth"),
-						"kHeight": oldArr("kHeight"),
-						"caiZhi": oldArr("caiZhi"),
-						"beiZhu": oldArr("beiZhu")
+						//"technicianName": decodeURI(formUrl(url).technicianName),
+						//"shopName": shopName,
+						"panorama": pictrueArr,
+						//"imgArr": urlArr,
+						//"kName": oldArr("kName"),
+						//"kPlace": oldArr("kPlace"),
+						//"kNumber": oldArr("kNumber"),
+						//"kWidth": oldArr("kWidth"),
+						//"kHeight": oldArr("kHeight"),
+						//"caiZhi": oldArr("caiZhi"),
+						//"beiZhu": oldArr("beiZhu")
 				};
 				var data = {
 					"orderId":formUrl(url).orderId,
@@ -151,48 +152,19 @@
 					url:"${pageContext.request.contextPath}/backend/app/case/doCompleteCase",
 					data: data,
 					async:true,
-					dataType: "text",
+					dataType: "json",
 					traditional: true,
 					success:function(e){
 						var xhr=$.parseJSON($.base64.atob(e.responseText,true));
 						alert(xhr.msg);
 						if(xhr.msg=="操作成功"){
-							$("body").html('<h1 style="position: absolute;top: 50%;left: 35%;">操作成功请返回</h1>');
+							$("body").html('<h1 style="position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%);-ms-transform: translate(-50%,-50%);-moz-transform: translate(-50%,-50%);-webkit-transform: translate(-50%,-50%);">操作成功请返回</h1>');
 							window.open('','_self');
 							window.opener=null;
 							window.close();
 						}
 					}
 				})
-				//-----------封装返回一个输入框值的数组------------
-				function oldArr(a) {
-					var newRtc = $('[name="' + a + '"]');
-					if(newRtc.length > 0) {
-						for(var i = 0, b = []; i < newRtc.length; i++) {
-							b.push(newRtc[i].value);
-						}
-						return b
-					}
-				}
-			});
-			//------------放弃订单的操作----------------
-			$("#btnShare").click(function() {
-				if(confirm("您确定要提交订单吗？")){
-					$.post("${pageContext.request.contextPath}/backend/app/case/doCancelCase", {
-						"orderId": formUrl(url).orderId,
-						"technicianId": formUrl(url).technicianId
-						//"cancelContent": "quxiao"
-					}, function(data) {
-						var xhr=$.parseJSON($.base64.atob(data.responseText,true));
-						alert(xhr.msg);
-						if(xhr.msg=="操作成功"){
-							window.open('','_self');
-							window.opener=null;
-							window.close();
-						}
-						console.log(data);
-					});
-				}
 			})
 		</script>
 	</body>

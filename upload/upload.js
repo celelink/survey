@@ -1,5 +1,4 @@
-var objBig = {};
-objBig.arr = [];
+var pictrueArr= [];
 //默认加载完成后就必须执行一次
 (function($) {
 	// 当domReady的时候开始初始化
@@ -155,12 +154,12 @@ objBig.arr = [];
 			swf: '../../dist/Uploader.swf',
 			chunked: false,
 			compress: {
-				quality: 70,
+				quality: 85,
 				allowMagnify: false,
 				noCompressIfLarger: false,
 			},
-			auto: false,
-			fileNumLimit: 20,
+			auto: true,
+			fileNumLimit: 100,
 			chunkSize: 512 * 1024,
 			server: 'http://116.62.48.143/celefix/backend/base/saveImg',
 			//server: 'http://127.0.0.1:8000/celefix/backend/base/saveAttachment',
@@ -597,8 +596,9 @@ objBig.arr = [];
 			alert('Eroor: ' + code);
 		};
 		uploader.on('uploadSuccess', function(file, response) {
-			objBig.arr.push(response._raw);
-			console.log(objBig);
+			pictrueArr.push(response._raw);
+			console.log(response._raw);
+			console.log(pictrueArr);
 		});
 		$upload.on('click', function() {
 			if($(this).hasClass('disabled')) {
