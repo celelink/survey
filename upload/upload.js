@@ -217,8 +217,8 @@ objBig.arr = [];
 			window.uploader = uploader;
 		});
 		uploader.on('uploadBeforeSend', function(obj,data, headers) {   
-		   headers, {                                                               
-			 "Origin": "https://celelink.github.io/survey/upload/index.html" ,                                                       
+		   headers,{                                                               
+			 "Origin": "https://celelink.github.io" ,                                                       
 			 "Access-Control-Request-Method":"POST"                                           
 		   };                                                                               
 		});   
