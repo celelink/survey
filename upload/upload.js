@@ -163,12 +163,13 @@ objBig.arr = [];
 				extensions: 'jpg,jpeg,png',
 				mimeTypes: 'image/*'
 			},
-			compress: {
-				quality: 50,// 图片质量，只有type为`image/jpeg`的时候才有效。
-				allowMagnify: false,// 是否允许放大，如果想要生成小图的时候不失真，此选项应该设置为false.
-				noCompressIfLarger: false,
-				crop: false,// 是否允许裁剪。
-			},
+			//compress: {
+				//quality: 50,// 图片质量，只有type为`image/jpeg`的时候才有效。
+			//	allowMagnify: false,// 是否允许放大，如果想要生成小图的时候不失真，此选项应该设置为false.
+			//	noCompressIfLarger: false,
+			//	crop: false,// 是否允许裁剪。
+			//},
+				compress:null,
 			// 禁掉全局的拖拽功能。这样不会出现图片拖进页面的时候，把图片打开。
 			disableGlobalDnd: true,
 			fileSizeLimit: 200 * 1024 * 1024, // 200 M
