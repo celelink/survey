@@ -159,7 +159,7 @@ objBig.arr = [];
 				allowMagnify: false,
 				noCompressIfLarger: false,
 			},
-			auto: true,
+			auto: false,
 			fileNumLimit: 20,
 			chunkSize: 512 * 1024,
 			server: 'http://116.62.48.143/celefix/backend/base/saveImg',
