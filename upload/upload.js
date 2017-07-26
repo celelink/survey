@@ -154,7 +154,11 @@ objBig.arr = [];
 			paste: '#uploader',
 			swf: '../../dist/Uploader.swf',
 			chunked: false,
-			compress: null,
+			compress: {
+				quality: 70,
+				allowMagnify: false,
+				noCompressIfLarger: false,
+			},
 			auto: true,
 			fileNumLimit: 20,
 			chunkSize: 512 * 1024,
